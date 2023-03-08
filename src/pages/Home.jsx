@@ -7,12 +7,10 @@ import HeaderCentro from "../components/HeaderCentro";
 import MejoresIdeasParaTi from "../components/MejoresIdeasParaTi";
 import MenuNav from "../components/MenuNav";
 
-
 export default function Home() {
   return (
     <div>
      
-
       <HeaderCentro />
       <Estadisticas />
       <Beneficios />

@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
+import { toast,Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 import { DataContext } from "../components/data/DataProvider";
 
 export default function Team() {
-  const { getProduct, productos, deleteProductDb, editProductDb } =
+  const { productos, deleteProductDb, editProductDb } =
     useContext(DataContext);
 
-  useEffect(() => {
-    getProduct();
-  }, [productos]);
 
+  const notifi = ()=>{
+    toast.success("Producto eliminado ")
+  }
   return (
     <div className="mt-10 min-h-screen  py-28 px-10">
       
@@ -53,10 +54,12 @@ export default function Team() {
                     className="bg-rose-500 w-max px-6 py-2 text-gray-50 uppercase font-medium rounded-md hover:bg-rose-700"
                     onClick={() => {
                       deleteProductDb(e._id);
+                      notifi()
                     }}
                   >
                     Delete
                   </button>
+                  <Toaster/>
                   <Link to={`/new/${e._id}`} className="bg-rose-500 w-max px-6 py-2 text-gray-50 uppercase font-medium rounded-md hover:bg-rose-700">
                     Edit
                   </Link>

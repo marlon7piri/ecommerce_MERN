@@ -26,9 +26,7 @@ export const editProduct = async (id, found) => {
   return await axios.put("http://localhost:3000/products/", id, found);
 };
 
+export const getAproductRequest = async (id) => {
+  return await axios.get(`http://localhost:3000/products/${id}`);
+};
 
-export const getAproductRequest=async (id)=>{
-return await axios.get(`http://localhost:3000/products/${id}`)
-
-
-}
