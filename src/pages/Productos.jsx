@@ -1,22 +1,22 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react";
 
-import {DataContext} from '../components/data/DataProvider'
-import {BsCheck2} from 'react-icons/bs'
-import { Link } from 'react-router-dom'
-import CardProductos from '../components/CardProductos'
-
+import { DataContext } from "../components/data/DataProvider";
+import { BsCheck2 } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import CardProductos from "../components/CardProductos";
+import axios from "axios";
 
 export default function Productos() {
-
-  
+  const { productos } = useContext(DataContext);
 
   return (
-    <div className="  w-full">
- 
-<CardProductos/>
-
-
-<div className='mensaje fixed top-40 bottom-0 left-[40%] bg-gray-300 w-max h-max z-50 flex justify-center items-center m-auto rounded-lg'><div className='flex justify-center items-center gap-3  p-4 rounded-md'><h1 className='text-4xl text-gray-800 font-bold'>Producto Agregado</h1><BsCheck2 className='text-4xl text-gray-50 font-black'/></div></div>
+    <div className="w-full h-full grid grid-cols-4  lg:grid-cols-4   md:grid-cols-2  sm:grid-cols-1 p-20">
+      {
+        productos.map(item=>{
+          return <CardProductos item={item} key={item.id}/>
+        })
+      }
+      
     </div>
-  )
+  );
 }

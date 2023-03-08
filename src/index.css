@@ -85,3 +85,15 @@
     opacity: 1;
   }
 }
+
+
+.menu{
+  display: flex;
+}
+
+@media(max-width:600px){
+  .menu{
+    display: none;
+  }
+
+}
