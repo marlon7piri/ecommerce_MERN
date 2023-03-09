@@ -4,3 +4,4 @@ config()
 
 export const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/test";
 export const PORT = process.env.PORT || 8080 ;
+export const PUBLIC_KEY_STRIPE = process.env.PUBLIC_KEY_STRIPE;

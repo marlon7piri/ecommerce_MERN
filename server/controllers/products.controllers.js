@@ -3,6 +3,10 @@ import Products from "../models/Products.js";
 import { uploadImage, deleteImage } from "./libs/cloudinary.js";
 import fs from "fs-extra";
 
+import { PUBLIC_KEY_STRIPE } from "../config.js";
+import Stripe from "stripe";
+
+
 export const getProducts = async (req, res) => {
   try {
     const products = await Products.find(req.body);
@@ -75,11 +79,32 @@ export const editProduct = async (req, res) => {
 
 export const getProduct = async (req, res) => {
   try {
-    const  {id} = req.params;
+    const { id } = req.params;
     const productFound = await Products.findById(id);
-    
-    return res.json(productFound)
+
+    return res.json(productFound);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
+};
+
+// configuracion de pago con stripe
+const stripe = new Stripe(PUBLIC_KEY_STRIPE)
+export const getStripe = async (req, res) => {
+  const { amount, id, email, pais } = req.body;
+
+  const payment = await stripe.paymentIntents.create({
+    amount,
+    currency: "USD",
+    description: email,
+    payment_method: id,
+    confirm: true,
+  });
+
+  console.log("Payment", payment);
+
+  res.json({
+    message: "paiment sucecessful",
+    success: true,
+  });
 };
