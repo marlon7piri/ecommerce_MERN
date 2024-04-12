@@ -8,7 +8,7 @@ export default function Estadisticas() {
       <div className="text-5xl mb-[50px] mt-[50px] ">
         <p className=" text-gray-700"><span className="text-green-500 font-semibold ">6000 + Buyers</span> Across <br/>the World</p>
       </div>
-      <div className="flex justify-center gap-20">
+      <div className="lg:flex md:flex justify-center gap-20 sm:flex sm:flex-col sm:gap-8">
         <div>
           <p className="text-4xl text-gray-700">
             2,500 <span className="text-green-500">+</span>

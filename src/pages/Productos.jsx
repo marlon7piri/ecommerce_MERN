@@ -7,16 +7,24 @@ import CardProductos from "../components/CardProductos";
 import axios from "axios";
 
 export default function Productos() {
-  const { productos } = useContext(DataContext);
+  const { productos,handlerLeft,getProductRequest } = useContext(DataContext);
+console.log(productos);
+
 
   return (
-    <div className="w-full h-full grid grid-cols-4  lg:grid-cols-4   md:grid-cols-2  sm:grid-cols-1 p-20">
+    <div className="w-full h-full grid grid-cols-4  lg:grid-cols-4   md:grid-cols-3  sm:grid-cols-1 p-20">
       {
-        productos.map(item=>{
+        productos?.map(item=>{
           return <CardProductos item={item} key={item.id}/>
         })
       }
-      
+     
+
+     <div>
+ 
+
+
+     </div>
     </div>
   );
 }

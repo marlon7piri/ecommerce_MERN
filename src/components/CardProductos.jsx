@@ -10,22 +10,22 @@ export default function CardProductos({ item }) {
     toast.success("Producto agregado");
   };
 
-  const imagenUrl =
+/*   const imagenUrl =
     import.meta.env.VITE_API_STRAPI_URL_BASE +
-    item.attributes.image.data.attributes.url;
+    item.attributes.image.data.attributes.url; */
 
   return (
     <div className="mt-24">
       <div className="bg-gray-50  w-[250px] h-[250px] flex flex-col justify-center items-center rounded-md shadow-xl shadow-slate-700 overflow-hidden ">
         <div className=" w-[140px] h-[140px] flex justify-center items-center">
           <img
-            src={imagenUrl}
+            src={item.image.url}
             alt=""
             className="w-full h-full object-cover transition-transform duration-500 "
-          />
+          /> 
         </div>
-        <p>{item.attributes.title}</p>
-        <p className="font-black">${item.attributes.price}</p>
+        <p>{item.nombre}</p>
+        <p className="font-black">${item.precio}</p>
         <div className="flex gap-2 p-2">
           <button
             className="bg-rose-500 w-max px-6 py-2 text-gray-50 uppercase font-medium rounded-md hover:bg-rose-700"
@@ -37,7 +37,7 @@ export default function CardProductos({ item }) {
             Add
           </button>
           <Toaster position="top-[200px] left-[200px]"/>
-          <Link to={`/details/${item.attributes.title}`}>
+          <Link to={`/details/${item.nombre}`}>
             <button className="bg-rose-500 w-max px-4 py-2 text-gray-50 uppercase font-medium rounded-md hover:bg-rose-700">
               Details
             </button>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import About from "../components/About";
 import Beneficios from "../components/Beneficios";
+import { DataContext } from "../components/data/DataProvider";
 import Estadisticas from "../components/Estadisticas";
 import Header from "../components/Header";
 import HeaderCentro from "../components/HeaderCentro";
@@ -8,9 +9,10 @@ import MejoresIdeasParaTi from "../components/MejoresIdeasParaTi";
 import MenuNav from "../components/MenuNav";
 
 export default function Home() {
+  const {handlerLeft} = useContext(DataContext);
   return (
-    <div>
-     
+    <div >
+      
       <HeaderCentro />
       <Estadisticas />
       <Beneficios />

@@ -58,8 +58,10 @@ export const producto=[
 
   {id:1,
     imagen:"https://res.cloudinary.com/dxi9fwjsu/image/upload/v1672784916/tlppkpns3jvgtvi06rinb23ar3-88e5221dad79350eb0685dfc4ea26087_qwowwt.png",
-    nombre:"carterasalmon",
-    precio:34.99
+    title:"carterasalmon",
+    description:"esta es una descripcion",
+    price:34.99,
+    quantity:1
 
 
   },

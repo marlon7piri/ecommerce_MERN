@@ -1,10 +1,8 @@
 import Products from "../models/Products.js";
 /* import db from "../dbmysql.js" */
-import { uploadImage, deleteImage } from "./libs/cloudinary.js";
+import { uploadImage, deleteImage } from "../libs/cloudinary.js";
 import fs from "fs-extra";
 
-import { PUBLIC_KEY_STRIPE } from "../config.js";
-import Stripe from "stripe";
 
 
 export const getProducts = async (req, res) => {
@@ -31,7 +29,7 @@ export const addProducts = async (req, res) => {
       };
     }
 
-    const newproducto = await new Products({
+    const newproducto = new Products({
       nombre,
       precio,
       descripcion,
@@ -89,22 +87,4 @@ export const getProduct = async (req, res) => {
 };
 
 // configuracion de pago con stripe
-const stripe = new Stripe(PUBLIC_KEY_STRIPE)
-export const getStripe = async (req, res) => {
-  const { amount, id, email, pais } = req.body;
 
-  const payment = await stripe.paymentIntents.create({
-    amount,
-    currency: "USD",
-    description: email,
-    payment_method: id,
-    confirm: true,
-  });
-
-  console.log("Payment", payment);
-
-  res.json({
-    message: "paiment sucecessful",
-    success: true,
-  });
-};

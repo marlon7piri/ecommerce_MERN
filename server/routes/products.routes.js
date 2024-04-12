@@ -4,8 +4,9 @@ import {
   getProducts,
   deleteProducts,
   editProduct,
-  addProducts,getStripe
+  addProducts
 } from "../controllers/products.controllers.js";
+import { getStripe } from "../controllers/checkout.js";
 
 const router = Router();
 
@@ -14,7 +15,7 @@ router.post("/products", addProducts);
 router.delete("/products/:id", deleteProducts);
 router.put("/products/:id", editProduct);
 router.get("/products/:id", getProduct);
-router.post('/payment',getStripe) 
+router.post('/orders',getStripe) 
 
 
 export default router;

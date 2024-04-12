@@ -16,27 +16,27 @@ export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [productos, setProductos] = useState([]);
-
+  const [show, setShow] = useState(true);
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
   const params = useParams();
   const navigate = useNavigate();
 
   const fetchStrapi = async () => {
-    const res = await axios.get(
-      import.meta.env.VITE_API_STRAPI_URL + "/products?populate=*",
-      {
-        headers: {
-          Authorization: "Bearer" + import.meta.env.VITE_API_STRAPI_TOKENS,
-        },
-      }
-    );
-
-    setProductos(res.data.data);
+    const res = await getProductRequest();
+    setProductos(res.data);
   };
+
   useEffect(() => {
     fetchStrapi();
+    /*  const items = JSON.parse(window.localStorage.getItem("cart"));
+
+    setCarrito(items); */
   }, []);
+  useEffect(() => {
+    /*  fetchStrapi(); */
+    window.localStorage.setItem("cart", JSON.stringify(carrito));
+  }, [carrito]);
 
   const createProduct = async (newproducto) => {
     try {
@@ -51,7 +51,6 @@ export const DataProvider = ({ children }) => {
 
   const editProduct = async (id) => {
     const res = await getAproductRequest(id);
-    console.log(res);
   };
 
   const deleteProductDb = (id) => {
@@ -60,45 +59,78 @@ export const DataProvider = ({ children }) => {
   };
 
   const addCarrito = (e) => {
-    const {id}=e
-    console.log(id);
+    console.log(carrito);
+    console.log(e._id);
 
-
-    const itemfound = carrito.find((item) => item.id === id);
-console.log(itemfound);
+    const itemfound = carrito.find((item) => {
+      console.log(item);
+      return item._id === e._id;
+    });
+    console.log(itemfound);
     if (itemfound) {
+      console.log("producto que se repite");
       setCarrito(
         carrito.map((item) => {
-          if (item.id === e.id) {
+          if (item._id === e._id) {
             return {
               ...itemfound,
-              quantity: itemfound.attributes.quantity ++,
-              
+              cantidad: itemfound.cantidad + 1,
             };
           } else return item;
         })
       );
     } else {
-      setCarrito([...carrito, { ...e, quantity: 1 }]);
+      setCarrito([...carrito, e]);
     }
+  };
 
+  const reducirCantidad = (id) => {
+    const productFound = carrito.find((item) => item._id === id);
+
+    if (productFound) {
+      setCarrito(
+        carrito.map((element) => {
+          if (element._id === productFound._id && productFound.cantidad > 1) {
+            return { ...element, cantidad: productFound.cantidad - 1 };
+          }
+          return element;
+        })
+      );
+    } else {
+      return carrito;
+    }
+  };
+
+  const aumentarCantidad = (id) => {
+    setCarrito((item) => {
+      return item.map((element) => {
+        if (element._id === id) {
+          return { ...element, cantidad: element.cantidad + 1 };
+        }
+        return element;
+      });
+    });
   };
 
   const deleted = (id) => {
-    const newChange = carrito.filter((e) => e.id != id);
-
-    setCarrito(newChange);
+    console.log(id);
+    setCarrito(carrito.filter((e) => e._id != id));
   };
 
   useEffect(() => {
     const getTotal = () => {
-      let res = carrito.reduce((prev, item) => {
-        return prev + (item.attributes.price * item.attributes.quantity);
+      let res = carrito?.reduce((prev, item) => {
+        return prev + item.precio * item.cantidad;
       }, 0.0);
       setTotal(res);
     };
     getTotal();
   }, [carrito]);
+
+  const handlerLeft = () => {
+    document.querySelector(".menu").classList.toggle("show");
+    setShow(!show);
+  };
 
   return (
     <DataContext.Provider
@@ -116,7 +148,10 @@ console.log(itemfound);
         deleteProductDb,
         editProduct,
         fetchStrapi,
-        setProductos,
+        reducirCantidad,
+        aumentarCantidad,
+        handlerLeft,
+        show,
       }}
     >
       {children}

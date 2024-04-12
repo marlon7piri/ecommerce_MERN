@@ -27,12 +27,13 @@ function App() {
       <DataProvider>
         <ScrollToTop/>
         <MenuNav />
+        
         <Routes>
           <Route exact path="/productos" element={<Productos />} />
           <Route path="/new/" element={<Createproduct />} />
           <Route path="/new/:id" element={<Createproduct />} />
           <Route exact path="/carrito" element={<Carrito />} />
-          <Route exact path="/team" element={<Team />} />
+         
           <Route exact path="/success" element={<Sucess />} />
 
           <Route exact path="/details/:producto" element={<Details />} />

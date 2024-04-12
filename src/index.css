@@ -93,7 +93,29 @@
 
 @media(max-width:600px){
   .menu{
-    display: none;
+    width:60%;
+    height: 0vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom: 0;
+    background-color:#4b5563;
+    z-index: 30;
+    transition: .3s ease-in-out;
+    opacity:0;
+    
+  
+  }
+
+  .show{
+   
+   opacity:1;
+   height: 70vh;
   }
 
 }

@@ -3,7 +3,7 @@ import React from "react";
 export default function ColumnaCentro() {
   return (
     <div className="p-4" data-aos="fade-left"
-    >
+   >
       <div >
         <img
           src="https://res.cloudinary.com/dxi9fwjsu/image/upload/v1672785021/handbag-tapestry-blue-leather-designer-blue-shell-bag-coach-573b60170aee2c05f91934781a6c7e19_h9zyqh.png"
