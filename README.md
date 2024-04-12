@@ -3,3 +3,5 @@ Tienda de productos(carteras) realizada con las tecnologias React , MongoDb, Exp
 
 # instalacion de modulos en la parte del servidor
 instalamos npm install mongoose, cors, express, cloudinary , express-fileupload, nodemon, dotenv
+--npm install
+
