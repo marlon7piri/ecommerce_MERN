@@ -15,7 +15,7 @@ export default function Team() {
     toast.success("Producto eliminado ")
   }
   return (
-    <div className="mt-10 min-h-screen  py-28 px-10">
+    <div className=" min-h-screen  py-28 px-10">
       
 
       <div className="flex justify-evenly p-2">
@@ -25,7 +25,7 @@ export default function Team() {
         </h2>
         <Link
           to="/new"
-          className="bg-gray-300 w-max block p-2 h-max rounded-md hover:bg-rose-500 transition-colors duration-500 hover:text-white"
+          className="bg-green-500 w-max px-6 py-2 text-gray-50 uppercase font-medium rounded-md hover:bg-green-700"
         >
           Crear Nuevo Producto
         </Link>

@@ -45,7 +45,7 @@ export default function MenuNav() {
           </li>
           <li>
             <Link to="/team" className="links hover:text-rose-700" onClick={()=>handlerLeft()}>
-              Team
+              team
             </Link>
           </li>
         </ul>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getProductRequest = async () => {
-  return await axios.get("http://localhost:3000/products");
+  return await axios.get("http://localhost:3000/carteras");
 };
 
 export const createProductRequest = async (newproducto) => {
@@ -22,7 +22,7 @@ export const DeleteProduct = async (id) => {
   return await axios.delete(`http://localhost:3000/products/${id}`);
 };
 
-export const editProduct = async (id, found) => {
+export const editProductRequest = async (id, found) => {
   return await axios.put("http://localhost:3000/products/", id, found);
 };
 

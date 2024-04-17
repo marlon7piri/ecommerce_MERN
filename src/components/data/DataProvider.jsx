@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import {
   getProductRequest,
   DeleteProduct,
-  editProduct,
+ 
   createProductRequest,
   getAproductRequest,
 } from "./api";
@@ -24,6 +24,8 @@ export const DataProvider = ({ children }) => {
 
   const fetchStrapi = async () => {
     const res = await getProductRequest();
+
+    console.log(res.data)
     setProductos(res.data);
   };
 
@@ -40,7 +42,7 @@ export const DataProvider = ({ children }) => {
 
   const createProduct = async (newproducto) => {
     try {
-      const res = createProductRequest(newproducto);
+      const res = await createProductRequest(newproducto);
 
       setProductos([...productos, res.data]);
       navigate("/productos");
@@ -51,11 +53,13 @@ export const DataProvider = ({ children }) => {
 
   const editProduct = async (id) => {
     const res = await getAproductRequest(id);
+    
   };
 
-  const deleteProductDb = (id) => {
-    DeleteProduct(id);
-    setProductos(productos.filter((producto) => producto.id != id));
+  const deleteProductDb = async (id) => {
+    const res = await DeleteProduct(id);
+
+    setProductos(productos.filter((producto) => producto._id != res.data._id));
   };
 
   const addCarrito = (e) => {
@@ -143,7 +147,7 @@ export const DataProvider = ({ children }) => {
         uuidv4,
         deleted,
         total,
-        fetchStrapi,
+        
         createProduct,
         deleteProductDb,
         editProduct,

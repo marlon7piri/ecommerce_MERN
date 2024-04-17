@@ -19,7 +19,7 @@ export default function CardProductos({ item }) {
       <div className="bg-gray-50  w-[250px] h-[250px] flex flex-col justify-center items-center rounded-md shadow-xl shadow-slate-700 overflow-hidden ">
         <div className=" w-[140px] h-[140px] flex justify-center items-center">
           <img
-            src={item.image.url}
+            src={item?.image?.url}
             alt=""
             className="w-full h-full object-cover transition-transform duration-500 "
           /> 

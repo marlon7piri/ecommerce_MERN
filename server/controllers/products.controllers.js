@@ -3,8 +3,6 @@ import Products from "../models/Products.js";
 import { uploadImage, deleteImage } from "../libs/cloudinary.js";
 import fs from "fs-extra";
 
-
-
 export const getProducts = async (req, res) => {
   try {
     const products = await Products.find(req.body);
@@ -53,8 +51,8 @@ export const deleteProducts = async (req, res) => {
     } else {
       if (productsdeleted.image.public_id) {
         await deleteImage(productsdeleted.image.public_id);
+        return res.status(200).json(productsdeleted);
       }
-      res.sendStatus(204);
     }
   } catch (error) {
     return res.status(404).json({ message: error.message });
@@ -87,4 +85,3 @@ export const getProduct = async (req, res) => {
 };
 
 // configuracion de pago con stripe
-

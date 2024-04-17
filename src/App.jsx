@@ -32,6 +32,7 @@ function App() {
           <Route exact path="/productos" element={<Productos />} />
           <Route path="/new/" element={<Createproduct />} />
           <Route path="/new/:id" element={<Createproduct />} />
+          <Route path="/team" element={<Team />} />
           <Route exact path="/carrito" element={<Carrito />} />
          
           <Route exact path="/success" element={<Sucess />} />
