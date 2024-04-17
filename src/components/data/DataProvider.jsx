@@ -25,7 +25,6 @@ export const DataProvider = ({ children }) => {
   const fetchStrapi = async () => {
     const res = await getProductRequest();
 
-    console.log(res.data)
     setProductos(res.data);
   };
 

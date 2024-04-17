@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getProductRequest = async () => {
-  return await axios.get("http://localhost:3000/carteras");
+  return await axios.get("http://localhost:3000/products");
 };
 
 export const createProductRequest = async (newproducto) => {
