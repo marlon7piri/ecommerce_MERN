@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = `${process.env.VITE_MY_DOMAIN}/products`
+const URL = `https://ecommerce-mern-pied.vercel.app/products`
 
 
 export const getProductRequest = async () => {
