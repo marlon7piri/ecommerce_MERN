@@ -10,7 +10,7 @@ import { getStripe } from "../controllers/checkout.js";
 
 const router = Router();
 
-router.get("/carteras", getProducts);
+router.get("/products", getProducts);
 router.post("/products", addProducts);
 router.delete("/products/:id", deleteProducts);
 router.put("/products/:id", editProduct);
