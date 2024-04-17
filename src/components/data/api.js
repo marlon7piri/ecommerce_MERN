@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = `https://ecommerce-mern-pied.vercel.app/products`
+const URL = `https://eccomerce-mern-backend.vercel.app/products`
 
 
 export const getProductRequest = async () => {
