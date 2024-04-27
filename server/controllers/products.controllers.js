@@ -14,7 +14,7 @@ export const getProducts = async (req, res) => {
 
 export const addProducts = async (req, res) => {
   try {
-    const { nombre, precio, descripcion } = req.body;
+    const { nombre, precio, descripcion,cantidad } = req.body;
     let image;
     if (req.files.image) {
       const imagenupload = await uploadImage(req.files.image.tempFilePath);
@@ -32,6 +32,7 @@ export const addProducts = async (req, res) => {
       precio,
       descripcion,
       image,
+      cantidad
     });
 
     await newproducto.save();

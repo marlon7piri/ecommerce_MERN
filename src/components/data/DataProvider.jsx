@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import {
   getProductRequest,
   DeleteProduct,
- 
   createProductRequest,
   getAproductRequest,
 } from "./api";
@@ -17,7 +16,15 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [productos, setProductos] = useState([]);
   const [show, setShow] = useState(true);
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(() => {
+    try {
+      const items = localStorage.getItem("cart");
+
+      return items ? JSON.parse(items) : [];
+    } catch (error) {
+      return [];
+    }
+  });
   const [total, setTotal] = useState(0);
   const params = useParams();
   const navigate = useNavigate();
@@ -30,19 +37,18 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     fetchStrapi();
-    /*  const items = JSON.parse(window.localStorage.getItem("cart"));
-
-    setCarrito(items); */
   }, []);
   useEffect(() => {
-    /*  fetchStrapi(); */
-    window.localStorage.setItem("cart", JSON.stringify(carrito));
+    fetchStrapi();
+    const items = localStorage.setItem("cart", JSON.stringify(carrito));
+
+    console.log(items);
   }, [carrito]);
 
   const createProduct = async (newproducto) => {
     try {
       const res = await createProductRequest(newproducto);
-
+      console.log(res);
       setProductos([...productos, res.data]);
       navigate("/productos");
     } catch (error) {
@@ -52,7 +58,6 @@ export const DataProvider = ({ children }) => {
 
   const editProduct = async (id) => {
     const res = await getAproductRequest(id);
-    
   };
 
   const deleteProductDb = async (id) => {
@@ -146,7 +151,7 @@ export const DataProvider = ({ children }) => {
         uuidv4,
         deleted,
         total,
-        
+
         createProduct,
         deleteProductDb,
         editProduct,

@@ -1,4 +1,4 @@
-import { PUBLIC_KEY_STRIPE } from "../config.js";
+import { MY_DOMAIN, PUBLIC_KEY_STRIPE } from "../config.js";
 import Stripe from "stripe";
 
 const stripe = new Stripe(PUBLIC_KEY_STRIPE);

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL = `https://eccomerce-mern-backend.vercel.app/products`
+const URL2 = `https://eccomerce-mern-backend.vercel.app/products`
+const URL = `http://localhost:3000/products`
 
 
 export const getProductRequest = async () => {
@@ -8,6 +9,8 @@ export const getProductRequest = async () => {
 };
 
 export const createProductRequest = async (newproducto) => {
+
+  console.log(newproducto)
   const form = new FormData();
 
   for (let key in newproducto) {

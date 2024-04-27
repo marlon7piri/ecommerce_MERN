@@ -9,16 +9,16 @@ export default function Createproduct() {
 
   const params = useParams();
 
-  console.log(params.id)
 
   return (
     <div className="  w-full min-h-screen p-20">
       <Formik
-        initialValues={{ nombre: "", descripcion: "", precio: "", image: null }}
+        initialValues={{ nombre: "", descripcion: "", precio: "", image: null,cantidad:1 }}
         validationSchema={Yup.object({
           nombre: Yup.string().required(),
           precio: Yup.number().required(),
           descripcion: Yup.string().required(),
+          cantidad:Yup.number()
         })}
         initialStatus
         onSubmit={(values, actions) => {
