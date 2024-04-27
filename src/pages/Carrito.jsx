@@ -28,8 +28,8 @@ export default function Carrito() {
   const handlerCheckout = async () => {
     try {
       setIsloading(true);
-      const res = await axios.post("http://localhost:3000/orders", carrito);
-      console.log(res);
+      const res = await axios.post("https://eccomerce-mern-backend.vercel.app/orders", carrito);
+      
 
       window.location = res.data.url;
     } catch (error) {
