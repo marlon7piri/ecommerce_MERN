@@ -1,21 +1,31 @@
 import React from "react";
-import About from "../components/About";
-import Beneficios from "../components/Beneficios";
-import Estadisticas from "../components/Estadisticas";
+
+import Contacto from "../components/Contacto";
 import Header from "../components/Header";
-import HeaderCentro from "../components/HeaderCentro";
-import MejoresIdeasParaTi from "../components/MejoresIdeasParaTi";
-import MenuNav from "../components/MenuNav";
+import About from "./About";
+import Marcas from "../components/Marcas";
+import MasVendidos from "../components/CardMotion";
+import Footer from "../components/Footer";
+import MasInfo from "../components/MasInfo";
+import PublicidadUno from "../components/PublicidadUno";
+import Wave, { WaveContacto } from "../components/Wave";
 
 export default function Home() {
+
+  
   return (
-    <div>
-     
-      <HeaderCentro />
-      <Estadisticas />
-      <Beneficios />
+    <div className="">
+      <Header />
+      <Wave/>
       <About />
-      <MejoresIdeasParaTi />
+      <PublicidadUno/>
+     {/*  <Wave/> */}
+      <Marcas/>
+      <MasVendidos />
+      <MasInfo />
+      <WaveContacto />
+      <Contacto />
+      <Footer />
     </div>
   );
 }

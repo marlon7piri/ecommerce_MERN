@@ -1,122 +1,65 @@
 import React, { createContext, useEffect, useState } from "react";
-import { producto } from "./data";
-import { v4 as uuidv4 } from "uuid";
-
-import {
-  getProductRequest,
-  DeleteProduct,
-  editProduct,
-  createProductRequest,
-  getAproductRequest,
-} from "./api";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { nike ,adida,puma,new_balance} from "../data/data.js";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [productos, setProductos] = useState([]);
+  const [show, setShow] = useState(false);
+  const [nikes, setNikes] = useState(nike);
+  const [adidas, setAdidas] = useState(adida)
+  const [pumas, setPumas] = useState(puma)
+const [newbalance, setNewbalance] = useState(new_balance)
 
-  const [carrito, setCarrito] = useState([]);
-  const [total, setTotal] = useState(0);
-  const params = useParams();
-  const navigate = useNavigate();
-
-  const fetchStrapi = async () => {
-    const res = await axios.get(
-      import.meta.env.VITE_API_STRAPI_URL + "/products?populate=*",
-      {
-        headers: {
-          Authorization: "Bearer" + import.meta.env.VITE_API_STRAPI_TOKENS,
-        },
-      }
-    );
-
-    setProductos(res.data.data);
-  };
-  useEffect(() => {
-    fetchStrapi();
-  }, []);
-
-  const createProduct = async (newproducto) => {
-    try {
-      const res = createProductRequest(newproducto);
-
-      setProductos([...productos, res.data]);
-      navigate("/productos");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const editProduct = async (id) => {
-    const res = await getAproductRequest(id);
-    console.log(res);
-  };
-
-  const deleteProductDb = (id) => {
-    DeleteProduct(id);
-    setProductos(productos.filter((producto) => producto.id != id));
-  };
-
-  const addCarrito = (e) => {
-    const {id}=e
-    console.log(id);
+  const [isloading, setIsloading] = useState(false)
 
 
-    const itemfound = carrito.find((item) => item.id === id);
-console.log(itemfound);
-    if (itemfound) {
-      setCarrito(
-        carrito.map((item) => {
-          if (item.id === e.id) {
-            return {
-              ...itemfound,
-              quantity: itemfound.attributes.quantity ++,
-              
-            };
-          } else return item;
-        })
-      );
-    } else {
-      setCarrito([...carrito, { ...e, quantity: 1 }]);
-    }
 
-  };
+  const spinner = () =>{
 
-  const deleted = (id) => {
-    const newChange = carrito.filter((e) => e.id != id);
+    setIsloading(true)
+  }
 
-    setCarrito(newChange);
-  };
 
   useEffect(() => {
-    const getTotal = () => {
-      let res = carrito.reduce((prev, item) => {
-        return prev + (item.attributes.price * item.attributes.quantity);
-      }, 0.0);
-      setTotal(res);
-    };
-    getTotal();
-  }, [carrito]);
+    setNikes(nike);
+    setAdidas(adida)
+    setPumas(puma)
+  }, []); 
+
+  const navigate = useNavigate()
+
+  const navegar=()=>{
+
+    navigate(-1)
+  }
+
+  const cambia_barra_menu =()=>{
+    const scroll = window.scrollY
+if(scroll>=300){
+  document.querySelector(".barra_menu").classList.toggle("barra_menu_active")
+
+}
+  }
+  
+
+  const handlerLeft = () => {
+    document.querySelector(".menu").classList.toggle("show");
+    setShow(!show);
+  };
+  const showLista = () => {
+    document.querySelector(".menu_check").classList.toggle("show_menu_check");
+  };
 
   return (
     <DataContext.Provider
       value={{
-        productos,
-        setProductos,
-        addCarrito,
-        carrito,
-        setCarrito,
-        uuidv4,
-        deleted,
-        total,
-        fetchStrapi,
-        createProduct,
-        deleteProductDb,
-        editProduct,
-        fetchStrapi,
-        setProductos,
+        show,
+        handlerLeft,
+        showLista,
+        cambia_barra_menu,
+        navegar,
+        nikes,adidas,pumas,newbalance,isloading, setIsloading,spinner
       }}
     >
       {children}

@@ -1,42 +1,42 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Carrito from "./pages/Carrito";
-import Createproduct from "./pages/Createproduct";
-import Details from "./pages/Details";
-import Productos from "./pages/Productos";
-import Team from "./pages/Team";
+
 import "./App.css";
-import { DataProvider } from "./components/data/DataProvider";
-import Home from "./pages/Home";
+
+import Home from "./pages/Home.jsx";
 import MenuNav from "./components/MenuNav";
-import Sucess from "./pages/Sucess";
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
-  return null;
-};
+
+import ScrollToTop from "./components/ScrollToTop";
+import { DataProvider } from "./components/data/DataProvider";
+
+
+import Nikes from "./pages/Nikes";
+import Adidas from "./pages/Adidas";
+import Pumas from "./pages/Pumas";
+import NotFound from "./pages/NotFound";
+import GamaAlta from "./pages/GamaAlta";
+import NewBalance from "./pages/NewBalance";
+import Tacos from "./pages/Tacos";
+
 function App() {
- 
-
   return (
     <div className="App">
       <DataProvider>
-        <ScrollToTop/>
+        <ScrollToTop />
         <MenuNav />
         <Routes>
-          <Route exact path="/productos" element={<Productos />} />
-          <Route path="/new/" element={<Createproduct />} />
-          <Route path="/new/:id" element={<Createproduct />} />
-          <Route exact path="/carrito" element={<Carrito />} />
-          <Route exact path="/team" element={<Team />} />
-          <Route exact path="/success" element={<Sucess />} />
-
-          <Route exact path="/details/:producto" element={<Details />} />
           <Route exact path="/" element={<Home />} />
+
+          <Route exact path="/nike" element={<Nikes />} />
+          <Route exact path="/adidas" element={<Adidas />} />
+          <Route exact path="/gama_alta" element={<GamaAlta />} />
+          <Route exact path="/puma" element={<Pumas />} />
+          <Route exact path="/new_balance" element={<NewBalance />} />
+          <Route exact path="/tacos" element={<Tacos />} />
+          <Route exact path="/*" element={<NotFound />} />
+         
         </Routes>
       </DataProvider>
     </div>
