@@ -8,46 +8,52 @@ import { DataContext } from "./data/DataProvider";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function MenuNav() {
-  const { carrito,handlerLeft,show} = useContext(DataContext);
+  const { carrito, handlerLeft, show } = useContext(DataContext);
 
   const longitud_carrito = carrito?.length;
-
- 
- 
-
-   
-
 
   return (
     <div className=" relative w-full  h-full  ">
       <div className="  py-2 px-2 w-full flex items-center just justify-between bg-gray-600  z-50 fixed">
         <div>
-          <h3 className="text-2xl text-rose-500 font-black"> <Link to="/" className="links hover:text-rose-700" >
+          <h3 className="text-2xl text-rose-500 font-black">
+            {" "}
+            <Link to="/" className="links hover:text-rose-700">
               Marlon
-            </Link></h3>
+            </Link>
+          </h3>
         </div>
 
         <ul className="menu flex gap-10 text-gray-50">
           <li>
-            <Link to="/" className="links hover:text-rose-700" onClick={()=>handlerLeft()}>
+            <Link
+              to="/"
+              className="links hover:text-rose-700"
+              onClick={() => handlerLeft()}
+            >
               Home
             </Link>
           </li>
 
           <li>
-            <Link to="/productos" className="links hover:text-rose-700" onClick={()=>
-              handlerLeft()}>
+            <Link
+              to="/productos"
+              className="links hover:text-rose-700"
+              onClick={() => handlerLeft()}
+            >
               Products
             </Link>
           </li>
-          <li>
-            <Link to="/carrito"className="links hover:text-rose-700" onClick={()=>handlerLeft()}>Cart</Link>
-          </li>
-          <li>
-            <Link to="/team" className="links hover:text-rose-700" onClick={()=>handlerLeft()}>
+
+          {/* <li>
+            <Link
+              to="/team"
+              className="links hover:text-rose-700"
+              onClick={() => handlerLeft()}
+            >
               team
             </Link>
-          </li>
+          </li> */}
         </ul>
 
         <div className="icons_nav flex gap-4 justify-center items-center relative mr-2 p-2">
@@ -59,12 +65,18 @@ export default function MenuNav() {
             <span className="flex justify-center items-center absolute -right-2 -bottom-3 p-3 bg-red-900 text-white  rounded-full w-4 h-4 z-20">
               {longitud_carrito}
             </span>
-           
           </div>
-          {show ? <RxHamburgerMenu
+          {show ? (
+            <RxHamburgerMenu
               className="lg:hidden md:hidden text-3xl  text-gray-50 z-50"
-              onClick={() =>handlerLeft()} 
-            /> : <IoMdClose className="lg:hidden md:hidden text-3xl  text-gray-50 z-50"  onClick={() =>handlerLeft()} />}
+              onClick={() => handlerLeft()}
+            />
+          ) : (
+            <IoMdClose
+              className="lg:hidden md:hidden text-3xl  text-gray-50 z-50"
+              onClick={() => handlerLeft()}
+            />
+          )}
         </div>
       </div>
     </div>

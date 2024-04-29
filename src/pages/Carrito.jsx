@@ -28,8 +28,10 @@ export default function Carrito() {
   const handlerCheckout = async () => {
     try {
       setIsloading(true);
-      const res = await axios.post("https://eccomerce-mern-backend.vercel.app/orders", carrito);
-      
+      const res = await axios.post(
+        "https://eccomerce-mern-backend.vercel.app/orders",
+        carrito
+      );
 
       window.location = res.data.url;
     } catch (error) {
@@ -40,7 +42,7 @@ export default function Carrito() {
 
   const Total = total?.toFixed(2);
   return (
-    <div className="flex flex-col gap-10 justify-center items-center w-full min-h-screen p-24">
+    <div className="flex flex-col gap-10 justify-center items-center w-full min-h-screen py-24 px-2">
       <h1 className="text-center text-6xl font-black text-gray-900">
         Tu Carrito
       </h1>
@@ -57,26 +59,28 @@ export default function Carrito() {
         return (
           <div
             key={e._id}
-            className="w-full min-w-[90%] bg-gray-100 h-[200px] flex items-center gap-4   rounded-lg overflow-hidden p-2"
+            className="w-full min-w-[90%] bg-gray-50 h-[200px] flex items-center gap-4   rounded-lg overflow-hidden p-2"
           >
             <img
               src={e.image?.url}
               alt={e.nombre}
               className="w-[100px] h-[100px] object-cover block"
             />
-            <p>{e.nombre}</p>
+            <div className="flex flex-col">
+              <p>{e.nombre}</p>
 
-            <p className="font-black">${e.precio}</p>
-            <div className="flex flex-col gap-2 items-center justify-center">
+              <p className="font-black">${e.precio}</p>
+            </div>
+            <div className="flex  gap-2 items-center justify-between  px-2 rounded-full border border-slate-800">
               <button
-                className="w-max h-max bg-sky-200 p-4 rounded-md hover:bg-sky-400 transition duration-300"
+                className="w-8 h-8 bg-slate-100 border border-slate-900 rounded-full m-2 hover:bg-slate-200 hover:shadow-sm "
                 onClick={() => reducirCantidad(e._id)}
               >
                 -
               </button>
               <p className="font-black">{e.cantidad}</p>
               <button
-                className="w-max h-max bg-sky-200 p-4 rounded-md hover:bg-sky-400 transition duration-300"
+                className="w-8 h-8 bg-slate-100 border border-slate-900 rounded-full m-2 hover:bg-slate-200 hover:shadow-sm "
                 onClick={() => aumentarCantidad(e._id)}
               >
                 +
@@ -87,7 +91,7 @@ export default function Carrito() {
                 deleted(e._id);
                 notifi();
               }}
-              className="bg-red-600 text-gray-50 rounded-md font-bold p-4 hover:bg-red-400"
+              className="bg-red-600 text-gray-50 w-max h-max  border border-slate-900 rounded-full p-4 hover:bg-red-700 hover:shadow-sm "
             >
               <RiDeleteBin5Fill />
             </button>

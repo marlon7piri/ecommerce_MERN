@@ -42,13 +42,13 @@ export const DataProvider = ({ children }) => {
     fetchStrapi();
     const items = localStorage.setItem("cart", JSON.stringify(carrito));
 
-    console.log(items);
+    
   }, [carrito]);
 
   const createProduct = async (newproducto) => {
     try {
       const res = await createProductRequest(newproducto);
-      console.log(res);
+     
       setProductos([...productos, res.data]);
       navigate("/productos");
     } catch (error) {
@@ -67,16 +67,15 @@ export const DataProvider = ({ children }) => {
   };
 
   const addCarrito = (e) => {
-    console.log(carrito);
-    console.log(e._id);
+   
 
     const itemfound = carrito.find((item) => {
-      console.log(item);
+     
       return item._id === e._id;
     });
-    console.log(itemfound);
+    
     if (itemfound) {
-      console.log("producto que se repite");
+      
       setCarrito(
         carrito.map((item) => {
           if (item._id === e._id) {
@@ -121,7 +120,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const deleted = (id) => {
-    console.log(id);
+   
     setCarrito(carrito.filter((e) => e._id != id));
   };
 

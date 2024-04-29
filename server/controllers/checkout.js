@@ -23,8 +23,8 @@ export const getStripe = async (req, res) => {
   );
 
   const session = await stripe.checkout.sessions.create({
-    success_url: `${MY_DOMAIN}/success`,
-    cancel_url: `${MY_DOMAIN}/`,
+    success_url: `https://ecommerce-mern-pied.vercel.app/`,
+    cancel_url: `https://ecommerce-mern-pied.vercel.app/`,
     line_items: linea_productos,
     mode: "payment",
   });

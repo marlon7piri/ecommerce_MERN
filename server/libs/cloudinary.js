@@ -1,13 +1,15 @@
 import { v2 as cloudinary } from "cloudinary";
-
-
+/* import {
+  API_KEY_CLOUDINARY,
+  API_SECRET_CLOUDINARY,
+  CLOUD_NAME,
+} from "../config"; */
 
 cloudinary.config({
-  cloud_name:"dxi9fwjsu",
-  api_key:"365676634229152",
-  api_secret:"T6zJQAzBEYG_Ph4mArxKm-NBw7w",
-})
-
+  cloud_name: 'dxi9fwjsu',
+  api_key: '365676634229152',
+  api_secret: 'T6zJQAzBEYG_Ph4mArxKm',
+});
 
 export const uploadImage = async (filePath) => {
   return await cloudinary.uploader.upload(filePath, {
@@ -18,4 +20,3 @@ export const uploadImage = async (filePath) => {
 export const deleteImage = async (id) => {
   return await cloudinary.uploader.destroy(id);
 };
-
