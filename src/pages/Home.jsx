@@ -8,6 +8,7 @@ import HeaderCentro from "../components/HeaderCentro";
 import MejoresIdeasParaTi from "../components/MejoresIdeasParaTi";
 import MenuNav from "../components/MenuNav";
 import { Outlet } from "react-router-dom";
+import { Carrusel } from "../components/Carrusel";
 
 export default function Home() {
   const {handlerLeft} = useContext(DataContext);
@@ -18,8 +19,8 @@ export default function Home() {
       <Estadisticas />
       <Beneficios />
       <About />
-      <MejoresIdeasParaTi />
-      <Outlet/>
+      <Carrusel/>
+      
     </div>
   );
 }

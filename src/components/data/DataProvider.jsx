@@ -48,6 +48,7 @@ export const DataProvider = ({ children }) => {
   const createProduct = async (newproducto) => {
     try {
       const res = await createProductRequest(newproducto);
+      console.log(res.data)
      
       setProductos([...productos, res.data]);
       navigate("/productos");

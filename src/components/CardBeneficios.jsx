@@ -3,7 +3,7 @@ import {beneficios} from './data/data'
 
 export default function CardBeneficios() {
   return (
-    <div className='w-full grid  grid-cols-4 gap-4 '>
+    <div className='w-full grid  grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-4'>
       {
 
 beneficios.map(e=>{

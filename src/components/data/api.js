@@ -9,7 +9,7 @@ export const getProductRequest = async () => {
 };
 
 export const createProductRequest = async (newproducto) => {
-
+console.log(newproducto)
   const form = new FormData();
 
   for (let key in newproducto) {

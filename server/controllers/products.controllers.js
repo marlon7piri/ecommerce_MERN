@@ -19,6 +19,8 @@ export const addProducts = async (req, res) => {
     if (req.files.image) {
       const imagenupload = await uploadImage(req.files.image.tempFilePath);
 
+      console.log(imagenupload)
+
       await fs.remove(req.files.image.tempFilePath);
 
       image = {
@@ -34,6 +36,8 @@ export const addProducts = async (req, res) => {
       image,
       cantidad
     });
+
+    console.log(newproducto)
 
     await newproducto.save();
 

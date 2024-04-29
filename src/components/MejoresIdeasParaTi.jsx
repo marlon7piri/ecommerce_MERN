@@ -3,6 +3,7 @@ import CardBenefLeft from "./CardMejoresILeft";
 import CardMejoresRight from "./CardMejoresRight";
 import { FaHandsWash } from "react-icons/fa";
 import CardMejoresILeft from "./CardMejoresILeft";
+import { Carrusel } from "./Carrusel";
 
 export default function MejoresIdeasParaTi() {
   return (
@@ -15,7 +16,7 @@ export default function MejoresIdeasParaTi() {
         </div>
         <div className="w-full">
           <CardMejoresRight />
-          {/*  <CardMejoresILeft/> */}
+         <Carrusel/>
         </div>
       </div>
     </div>

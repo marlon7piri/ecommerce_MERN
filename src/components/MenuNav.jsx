@@ -45,7 +45,7 @@ export default function MenuNav() {
             </Link>
           </li>
 
-          {/* <li>
+          <li>
             <Link
               to="/team"
               className="links hover:text-rose-700"
@@ -53,7 +53,7 @@ export default function MenuNav() {
             >
               team
             </Link>
-          </li> */}
+          </li>
         </ul>
 
         <div className="icons_nav flex gap-4 justify-center items-center relative mr-2 p-2">
