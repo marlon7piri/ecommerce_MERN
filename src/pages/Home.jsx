@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import HeaderCentro from "../components/HeaderCentro";
 import MejoresIdeasParaTi from "../components/MejoresIdeasParaTi";
 import MenuNav from "../components/MenuNav";
+import { Outlet } from "react-router-dom";
 
 export default function Home() {
   const {handlerLeft} = useContext(DataContext);
@@ -18,6 +19,7 @@ export default function Home() {
       <Beneficios />
       <About />
       <MejoresIdeasParaTi />
+      <Outlet/>
     </div>
   );
 }

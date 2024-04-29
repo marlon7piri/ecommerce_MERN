@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { Toaster,toast } from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 import { DataContext } from "../components/data/DataProvider";
 
@@ -63,7 +63,7 @@ export default function Details() {
       })
     }
 
-   
+<Outlet/>
     </div>
   );
 }
