@@ -12,21 +12,40 @@
 
 .embla {
   overflow: hidden;
-  background-color: rgb(249, 249, 249);
+  width: 100%;
+  background-color: rgb(243, 233, 233);
 }
 .embla__container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
   padding: 20px;
- 
 }
 .embla__slide {
-  flex: 0 0 100%;
-
-  width: 300px;
-  height: 400px;
+  display: flex;
+  flex: 0 0 50%;
+  min-width: 0;
+  justify-content: center;
+  align-items: center;
   object-fit: contain;
+}
+@media (width < 500px) {
+
+ 
+  .embla__slide {
+    
+    display: flex;
+    flex: 0 0 100%;
+    min-width: 0;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+  }
+  .embla__slide img{
+    
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+  }
 }
 
 .about_imagen {

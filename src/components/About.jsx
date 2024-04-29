@@ -6,7 +6,7 @@ export default function About() {
 
  
   return (
-    <div className='w-full h-full p-24' id="about">
+    <div className='w-full h-full py-24 px-8' id="about">
 
       
       <div className=' flex flex-col gap-20 relative'>

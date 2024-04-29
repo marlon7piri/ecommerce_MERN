@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { DataContext } from "./data/DataProvider";
+import { Link } from "react-router-dom";
 export function Carrusel() {
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
   const { productos } = useContext(DataContext);
@@ -9,10 +10,19 @@ export function Carrusel() {
   return (
     <div className="embla" ref={emblaRef}>
       <div className="embla__container">
-      <img  className="embla__slide" src="https://res.cloudinary.com/dxi9fwjsu/image/upload/v1672785037/handbag-leather-michael-kors-tote-bag-women-bag-6e5b7c411ea6b17f42044b5fcf5c53e3_slfy9o.png" />
-      <img  className="embla__slide" src="https://res.cloudinary.com/dxi9fwjsu/image/upload/v1672784922/handbag-leather-tote-bag-messenger-bag-women-s-handbags-14dc442078c8d78e6025e7ddba6f1892_wfuggp.png" />
-      <img  className="embla__slide" src="https://res.cloudinary.com/dxi9fwjsu/image/upload/v1672784928/handbag-messenger-bag-leather-tote-bag-women-s-handbags-d4d778acc3112d7686847ea2b6bc0f83_gobnz1.png" />
-        
+        {productos
+          .map((item) => (
+            <div className="embla__slide" key={item._id}>
+              <img src={item.image.url} />
+             <div className="w-full flex flex-col gap-4">
+             <span className="text-2xl text-slate-900 font-bold"> {item.nombre}</span>
+            
+             <span className="text-2xl text-slate-900 font-bold">$ {item.precio}</span>
+             <Link  className="bg-rose-500 w-[100px] h-[40px]  py-2  flex justify-center items-center text-gray-50 uppercase font-medium rounded-md hover:bg-rose-700" to={`/details/${item.nombre}`}>Ver</Link>
+             </div>
+            </div>
+          )).slice(0,5)
+          }
       </div>
     </div>
   );

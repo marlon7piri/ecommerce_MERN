@@ -36,10 +36,10 @@ export default function Details() {
                     className="w-[200px] h-[200px] object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 p-8">
                 <p>{item.nombre}</p>
                 <p className="font-black">${item.precio}</p>
-                <p className="font-black">{item.descripcion}</p>
+                <p className="font-black max-w-[400px]">{item.descripcion}</p>
                 <button
                     className="bg-rose-500 w-max px-6 py-2 text-gray-50 uppercase font-medium rounded-md hover:bg-rose-700"
                     onClick={() => {

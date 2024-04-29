@@ -12,10 +12,10 @@ export default function MejoresIdeasParaTi() {
       <div className="w-full">
         <div className="flex flex-col items-center justify-center sm:flex sm:gap-4 sm:mb-4 p-4">
           <FaHandsWash className="text-3xl text-gray-900" />
-          <p className="text-1xl text-gray-900">hands wash only</p>
+          <p className="text-4xl text-gray-900">hands wash only</p>
         </div>
         <div className="w-full">
-          <CardMejoresRight />
+          
          <Carrusel/>
         </div>
       </div>

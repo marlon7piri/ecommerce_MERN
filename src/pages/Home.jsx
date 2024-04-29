@@ -19,7 +19,7 @@ export default function Home() {
       <Estadisticas />
       <Beneficios />
       <About />
-      <Carrusel/>
+      <MejoresIdeasParaTi/>
       
     </div>
   );
