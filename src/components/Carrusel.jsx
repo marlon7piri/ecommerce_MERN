@@ -3,7 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { DataContext } from "./data/DataProvider";
 export function Carrusel() {
-  const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+  const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
   const { productos } = useContext(DataContext);
 
   return (
