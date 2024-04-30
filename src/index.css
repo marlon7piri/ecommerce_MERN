@@ -13,35 +13,41 @@
 .embla {
   overflow: hidden;
   width: 100%;
+  height: 400px;
+  display: flex;
   background-color: rgb(243, 233, 233);
 }
 .embla__container {
   display: flex;
+  gap: 1rem;
   width: 100%;
   padding: 20px;
 }
 .embla__slide {
   display: flex;
   flex: 0 0 50%;
-  min-width: 0;
+min-height: 300px;
   justify-content: center;
   align-items: center;
   object-fit: contain;
+  background-color: rgb(227, 221, 221);
+  box-shadow: rgba(0,0,10px,20px,0.8);
+  padding: 10px;
+  border-radius: 1rem;
+
+  gap: 10px;
 }
 @media (width < 500px) {
-
- 
   .embla__slide {
-    
     display: flex;
     flex: 0 0 100%;
     min-width: 0;
     justify-content: center;
+    min-height: 300px;
     align-items: center;
     object-fit: contain;
   }
-  .embla__slide img{
-    
+  .embla__slide img {
     width: 200px;
     height: 200px;
     object-fit: contain;
