@@ -1,6 +1,9 @@
 import { MY_DOMAIN, PUBLIC_KEY_STRIPE } from "../config.js";
 import Stripe from "stripe";
 
+
+const urltest = "http://localhost:5173/#"
+const urlProduction ='https://ecommerce-mern-pied.vercel.app/#'
 const stripe = new Stripe(PUBLIC_KEY_STRIPE);
 export const getStripe = async (req, res) => {
   const carrito = req.body;
