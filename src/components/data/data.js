@@ -1739,5 +1739,17 @@ export const masvendidos=[
       "https://res.cloudinary.com/dxi9fwjsu/image/upload/v1695163599/masvendidos/masvendidas5_wyeqwj.jpg",
     
   },
+  {
+    id:uuid(),
+    imagen:"https://res.cloudinary.com/dxi9fwjsu/image/upload/v1682517044/chef_zapatos/Tacos/t-15.jpg",
+   
+
+  },
+  {
+    id: uuid(),
+    imagen:
+      "https://res.cloudinary.com/dxi9fwjsu/image/upload/v1680190721/AltaGama/a40.jpg",
+   
+  },
  
 ]
