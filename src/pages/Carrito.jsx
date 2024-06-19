@@ -17,7 +17,7 @@ const object = {
 };
 
 export default function Carrito() {
-  const { carrito, deleted, total, aumentarCantidad, reducirCantidad } =
+  const { carrito, deleted, total, aumentarCantidad, reducirCantidad,setCarrito } =
     useContext(DataContext);
 
   const [isloading, setIsloading] = useState(false);
@@ -34,6 +34,7 @@ export default function Carrito() {
       );
 
       window.location = res.data.url;
+      setCarrito([])
     } catch (error) {
       console.log(error);
     }

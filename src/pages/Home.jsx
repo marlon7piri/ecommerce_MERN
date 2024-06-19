@@ -11,16 +11,14 @@ import { Outlet } from "react-router-dom";
 import { Carrusel } from "../components/Carrusel";
 
 export default function Home() {
-  const {handlerLeft} = useContext(DataContext);
+  const { handlerLeft } = useContext(DataContext);
   return (
-    <div >
-      
+    <div>
       <HeaderCentro />
       <Estadisticas />
       <Beneficios />
       <About />
-      <MejoresIdeasParaTi/>
-      
+      <MejoresIdeasParaTi />
     </div>
   );
 }
