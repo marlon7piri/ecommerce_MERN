@@ -9,7 +9,7 @@ import "./App.css";
 import { DataProvider } from "./components/data/DataProvider";
 import Home from "./pages/Home";
 import MenuNav from "./components/MenuNav";
-import Sucess from "./pages/Sucess";
+import Success from "./pages/Success";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -35,7 +35,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route exact path="/carrito" element={<Carrito />} />
          
-          <Route exact path="/success" element={<Sucess />} />
+          <Route exact path="/success" element={<Success />} />
 
           <Route exact path="/details/:producto" element={<Details />} />
           <Route exact path="/" element={<Home />} />

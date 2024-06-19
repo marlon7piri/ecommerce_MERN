@@ -34,7 +34,6 @@ export default function Carrito() {
       );
 
       window.location = res.data.url;
-      setCarrito([])
     } catch (error) {
       console.log(error);
     }
